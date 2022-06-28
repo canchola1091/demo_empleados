@@ -17,7 +17,11 @@ class GlobalPreferences {
   String? get userName => _globalPreferences.getString('userName');
   set userName(String? value) => _globalPreferences.setString('userName', value ?? '');
 
+  /// PATH DE IMAGEN
+  String? get imagePath => _globalPreferences.getString('imagePath');
+  set imagePath(String? value) => _globalPreferences.setString('imagePath', value ?? '');
+
   // LOGIN
-  bool? get isSession => _globalPreferences.getBool('isSession'); // TODO: Revisar valor null
-  set isSession(bool? value) => _globalPreferences.setBool('isSession', value ?? false);
+  bool get isSession => _globalPreferences.getBool('isSession') ?? false;
+  set isSession(bool value) => _globalPreferences.setBool('isSession', value);
 } 

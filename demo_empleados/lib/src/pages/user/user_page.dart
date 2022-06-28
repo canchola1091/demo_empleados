@@ -22,7 +22,7 @@ class UserPage extends StatelessWidget {
         body: SafeArea(
           child: _body()
         )
-       ),
+      )
     );
   }
 
@@ -36,7 +36,7 @@ class UserPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 27.0),
           child: Column(
             children: [
-              SizedBox(height: utils.porcientoH(Get.context, 20.0)),
+              SizedBox(height: utils.porcientoH(Get.context, 15.0)),
               _title(),
               SizedBox(height: utils.porcientoH(Get.context, 5.0)),
               Padding(
@@ -51,6 +51,7 @@ class UserPage extends StatelessWidget {
                   )
                 ),
               ),
+              const SizedBox(height: 50.0),
               _button(_.validateUserName)
             ]
           ),
@@ -62,22 +63,14 @@ class UserPage extends StatelessWidget {
   Widget _title() {
     return Column(
       children: [
+        FlutterLogo(size: utils.porcientoH(Get.context, 12.0)),
+        const SizedBox(height: 50.0),
         CustomText(
-          fTxt: 'BIENVENIDO A POKEDEX',
+          fTxt: 'Welcome Employees List',
           fSize: 19.0,
           fColor: th .primaryColor,
           fWeight: 'Bold',
         ),
-        const SizedBox(height: 50.0),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: CustomText(
-            fTxt: 'Ingresa tu Nombre de usuario',
-            fSize: 15.0,
-            fColor: th .secondaryColor,
-            fWeight: 'SemiBold',
-          ),
-        )
       ],
     );
   }
@@ -85,9 +78,10 @@ class UserPage extends StatelessWidget {
   Widget _button(void Function() _validateUserName) {
     return CustomButton(
       width: utils.porcientoW(Get.context, 17.0),
+      height: utils.porcientoW(Get.context, 11.0),
       bgColor: th.primaryColor,
       childWidget: const CustomText(
-        fTxt: 'ACEPTAR', 
+        fTxt: 'LOGIN',
         fSize: 17.0,
         fColor: Colors.white,
       ),

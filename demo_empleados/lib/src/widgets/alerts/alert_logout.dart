@@ -63,7 +63,9 @@ class AlertLogOut extends StatelessWidget {
                       bgColor: th.primaryColor,
                       childWidget: const CustomText(
                         fTxt: 'ACEPTAR',
-                        fSize: 15.0), 
+                        fSize: 15.0,
+                        fColor: Colors.white,
+                      ), 
                       btnFunction: fnDone
                     ),
                   ]

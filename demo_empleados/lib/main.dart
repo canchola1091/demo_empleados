@@ -18,14 +18,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final GlobalPreferences _globalPrefs = GlobalPreferences();
-
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Demo Empleados',
-      // initialRoute: '/user_page', // TODO: Agregar lógica para ver que pantalla mostrar
-      initialRoute: '/employees_page', // TODO: Agregar lógica para ver que pantalla mostrar
+      initialRoute: '/splash_page',
       getPages: Routes.routes,
     );
   }

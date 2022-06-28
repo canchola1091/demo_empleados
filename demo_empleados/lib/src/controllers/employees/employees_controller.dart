@@ -10,13 +10,15 @@ import 'package:get/route_manager.dart';
 class EmployeesController extends GetxController {
 
   final GlobalPreferences _globalPreferences = GlobalPreferences();
-  late EmployeesModel _employeesModel;
+  late EmployeesModel? _employeesModel;
   bool _loadingEmployees = true;
+  bool _hasError = false;
 
   //? GETTER
   GlobalPreferences get gxGlobalPreferences => _globalPreferences;
-  EmployeesModel get gxEmployeedModel => _employeesModel;
-  bool get gxLoadingEmployees => _loadingEmployees;
+  EmployeesModel? get gxEmployeedModel       => _employeesModel;
+  bool get gxLoadingEmployees               => _loadingEmployees;
+  bool get gxHasError                       => _hasError;
 
   @override
   void onInit() {
@@ -25,18 +27,26 @@ class EmployeesController extends GetxController {
   }
 
   @override
-  void onReady() {
+  void onReady() async{
     super.onReady();
-    gxGetEmployees();
+    await gxGetEmployees();
   }
 
   //==========================================================
-  /// CONSUME ENDPOINT DE PELICULAS EN CARTELERA
+  /// CONSUME ENDPOINT DE LISTA DE EMPLEADOS
   //==========================================================
   Future<void> gxGetEmployees() async {
     _employeesModel = await EmployeesServices().serviceGetEmployees();
+    if(_employeesModel == null) _hasError = true;
     _loadingEmployees = false;
     update(['list-employees']);
+  }
+
+  Future<void> tryGetEmployees() async{
+    _loadingEmployees = true;
+    _hasError = false;
+    update(['list-employees']);
+    await gxGetEmployees();
   }
 
   //==========================================================
@@ -45,7 +55,10 @@ class EmployeesController extends GetxController {
   Future<void> showAlertLogOut() async{
     utils.msginfo('--> Cerrando sesión...');
     Get.dialog( AlertLogOut(
-      fnDone: () => Get.offAllNamed('/user_page'), // TODO: Establecer cerre de sesión en la prefs
+      fnDone: () {
+        _globalPreferences.isSession = false;
+        Get.offAllNamed('/user_page');
+      },
       fnCancel: () => Get.back()
     ));
   }  

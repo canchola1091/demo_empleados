@@ -19,12 +19,8 @@ final Color primaryColor = utils.hexToColor('#2a3988');
 
 final Color secondaryColor = utils.hexToColor('#2DAFCE');
 
-final Color titlesColor = utils.hexToColor('#255EA9');
-
 final Color subTitleColor = utils.hexToColor('#3A555B');
 
 final Color errorColor = utils.hexToColor('#b00020');
 
 final Color snackBarColor = utils.hexToColor('#1D363C').withOpacity(0.95);
-
-final Color tutorialColor = utils.hexToColor('#108CAA').withOpacity(0.90);

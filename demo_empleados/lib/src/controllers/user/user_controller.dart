@@ -25,9 +25,6 @@ class UserController extends GetxController {
     if (_isValidForm) {
       _globalPrefers.userName = _userNameCtrl.text.trim();
       Get.offAllNamed('/employees_page');
-    }else{
-      print('Formulario invalido');
-      // TODO: Agregar alert
     }
   }
 

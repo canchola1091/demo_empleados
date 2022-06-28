@@ -1,11 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
-import 'package:get/get.dart';
-
-
-const String accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NzAzZjIwMzI0YmQ4NWU4Nzg5MWZmNzg3NDgzOGIyZSIsInN1YiI6IjVkMWU2N2E3OTRkOGE4MzExNjQwMTY3NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.dzRcIdteaT0YitIkVrxzVpUBP6ULU_BgHUZkLj4L80A'; 
-const String keyApi = '8703f20324bd85e87891ff7874838b2e';
 
 //==========================================================
 /// DEVUELVE PORCIENTO DE ANCHO DE LA PANTALLA
@@ -34,9 +28,7 @@ double porcientoH(BuildContext? _context, double _valor ){
 //==========================================================
 /// DEVUELVE COLOR EN HEXADECIMAL
 //==========================================================
-Color hexToColor(String _code) {
-  return Color(int.parse(_code.substring(1, 7), radix: 16) + 0xFF000000);
-}
+Color hexToColor(String _code) => Color(int.parse(_code.substring(1, 7), radix: 16) + 0xFF000000);
 
 //==========================================================
 /// VERIFICA SI EL EMAIL ES VALIDO
@@ -98,30 +90,3 @@ void msgwarn( msg ) => print('🚧 ' + msg.toString() +' 🚧');
 /// ERROR MESSAGE
 //==========================================================
 void msgerror( msg ) => print('🛑 '+ msg.toString() + ' 🛑');
-
-//==========================================================
-/// HEADER WHIT TOKEN
-//==========================================================
-Map<String, String> getHeaderWithToken() {
-    Map<String, String> requestHeaders = {
-      "Accept": "application/json",
-      "Authorization": "Bearer " + accessToken
-    };
-    return requestHeaders;
-  }
-
-//==========================================================
-/// LOADING QUE SE MUESTRA AL CONSUMIR ENDPOINTS
-//==========================================================
-Future<dynamic> cLoading() {
-  return Get.dialog(
-    WillPopScope(
-      onWillPop: () async => false,
-      child: const Center(
-        child: CircularProgressIndicator.adaptive()
-      )
-    ),
-    barrierDismissible: false,
-    name: 'dialog_loading'
-  );
-}
