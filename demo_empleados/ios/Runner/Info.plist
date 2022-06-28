@@ -43,5 +43,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+	<!-- Lineas para image Picker (Subir foto de galería o tomar foto con la camara) -->
+	<key>NSCameraUsageDescription</key>
+		<string>Permitir el acceso a la camara para captura y cargar una foto y usarla como foto de perfil</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Polipay necesita acceso para funcionar correctamente</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Permitir el acceso a las fotos para cargar una foto de su biblioteca y usarla como foto de perfil</string>
 </dict>
 </plist>
